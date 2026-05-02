@@ -5,7 +5,9 @@ class Calculator {
         this.clear();
     }
 
-    clear() {
+
+    
+        clear() {
         this.currentOperand = '0';
         this.previousOperand = '';
         this.operation = undefined;
@@ -17,7 +19,7 @@ class Calculator {
         if (this.currentOperand === '') this.currentOperand = '0';
     }
 
-    appendNumber(number) {
+            appendNumber(number) {
         if (number === '.' && this.currentOperand.includes('.')) return;
         if (this.currentOperand === '0' && number !== '.') {
             this.currentOperand = number.toString();
@@ -149,13 +151,16 @@ class Calculator {
     }
 }
 
+
+
 const numberButtons = document.querySelectorAll('[data-number]');
-const operationButtons = document.querySelectorAll('[data-operation]');
-const sciButtons = document.querySelectorAll('[data-sci-function]');
-const equalsButton = document.querySelector('[data-equals]');
-const deleteButton = document.querySelector('[data-delete]');
+      const operationButtons = document.querySelectorAll('[data-operation]');
+            const sciButtons = document.querySelectorAll('[data-sci-function]');
+            const equalsButton = document.querySelector('[data-equals]');
+            const deleteButton = document.querySelector('[data-delete]');
 const allClearButton = document.querySelector('[data-all-clear]');
 const modeToggle = document.getElementById('mode-toggle');
+
 const calculatorContainer = document.querySelector('.calculator');
 const previousOperandElement = document.getElementById('previous-operand');
 const currentOperandElement = document.getElementById('current-operand');
@@ -205,7 +210,7 @@ deleteButton.addEventListener('click', button => {
     calculator.updateDisplay();
 });
 
-// Mode Toggle Logic
+
 modeToggle.addEventListener('click', () => {
     calculatorContainer.classList.toggle('scientific-mode');
     modeToggle.classList.toggle('active');
@@ -216,17 +221,19 @@ modeToggle.addEventListener('click', () => {
     }
 });
 
-// Background Interaction Logic
+
 const mouseGlow = document.getElementById('mouse-glow');
 const blobs = document.querySelectorAll('.blob');
 const calculatorElem = document.getElementById('calculator');
 const firefliesContainer = document.getElementById('fireflies');
 const fireflies = [];
+
 let mouseX = 0;
 let mouseY = 0;
 let isMouseInside = false;
 
-// Create Fireflies
+
+
 for (let i = 0; i < 35; i++) {
     const firefly = document.createElement('div');
     firefly.className = 'firefly';
@@ -282,18 +289,18 @@ document.addEventListener('mousemove', (e) => {
 function animate() {
     fireflies.forEach(f => {
         if (!isMouseInside) {
-            // Gravitate towards mouse with jitter
+         
             f.targetX = mouseX + (Math.random() - 0.5) * 150;
             f.targetY = mouseY + (Math.random() - 0.5) * 150;
         } else {
-            // Drift randomly if mouse is inside calculator
+       
             if (Math.random() > 0.98) {
                 f.targetX = Math.random() * window.innerWidth;
                 f.targetY = Math.random() * window.innerHeight;
             }
         }
 
-        // Add organic jitter
+  
         const jitterX = (Math.random() - 0.5) * f.jitter;
         const jitterY = (Math.random() - 0.5) * f.jitter;
 
@@ -309,7 +316,7 @@ function animate() {
 
 animate();
 
-// Keyboard Support
+/*here i have created the logic*/
 document.addEventListener('keydown', e => {
     if ((e.key >= '0' && e.key <= '9') || e.key === '.') {
         calculator.appendNumber(e.key);
